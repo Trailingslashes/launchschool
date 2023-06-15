@@ -1,4 +1,8 @@
 const readline = require("readline-sync");
+const fs = require("fs");
+
+const fileContent = fs.readFileSync("calculator_messages.json", "utf8");
+const messages = JSON.parse(fileContent);
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -8,30 +12,28 @@ function invalidNumber(number) {
   return number.trimStart() === "" || Number.isNaN(Number(number));
 }
 
-prompt("Welcome to Calculator!");
+prompt(messages.welcome);
 
 while (true) {
-  prompt("What's the first number?");
+  prompt(messages.enterFirstNumber);
   let number1 = readline.question();
   while (invalidNumber(number1)) {
-    prompt("Hmm... that doesn't look like a valid number.");
+    prompt(messages.validNumber);
     number1 = readline.question();
   }
 
-  prompt("What's the second number?");
+  prompt(messages.enterSecondNumber);
   let number2 = readline.question();
   while (invalidNumber(number2)) {
-    prompt("Hmm... that doesn't look like a valid number.");
+    prompt(messages.validNumber);
     number2 = readline.question();
   }
 
-  prompt(
-    "What operation would you like to perform\n1) Add 2) Subtract 3) Multiply 4) Divide? "
-  );
+  prompt(messages.chooseOperation);
   let operation = readline.question();
 
   while (!["1", "2", "3", "4"].includes(operation)) {
-    prompt("Must choose 1, 2, 3, or 4");
+    prompt(messages.mustChoose);
     operation = readline.question();
   }
 
@@ -54,7 +56,7 @@ while (true) {
 
   prompt(`The result is ${output}`);
 
-  prompt("Do you want to perform another calculation? (y/n)");
+  prompt(messages.performAnotherCalculation);
   const answer = readline.question();
   if (answer.toLowerCase() !== "y") {
     break;
