@@ -1,26 +1,8 @@
-// let m = p * (r / (1 - Math.pow((1 + r), (-n))));
-/*
-monthly payment = 400K * (1 Math.pow((1+ 0.05/12), (-12 * 30)
-Inputs:
-m = monthly payment
-p = loan amount (400k)
-r = interest rate 0.05
-n = number of payments made every single year (12 payment a year)
-t = long duration - 30 years
-Processing:
-Prompt for loan
-Prompt for term 
-Prompt for interest
-Outputs:
-Payment Every Month
-Total of payments
-Total interest (Principal and Interest)
-*/
 const readline = require("readline-sync");
-//const fs = require('fs');
+const fs = require("fs");
 
-//const fileContent = fs.readFileSync('calculator_messages.json', 'utf8');
-//const messages = JSON.parse(fileContent);
+const fileContent = fs.readFileSync("mortgage_messages.json", "utf8");
+const messages = JSON.parse(fileContent);
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -64,4 +46,10 @@ while (true) {
     (Math.pow(1 + monthlyInterestRate, termInMonths) - 1);
 
   console.log(monthlyPayments.toFixed(2));
+
+  prompt(messages.performAnotherCalculation);
+  const answer = readline.question();
+  if (answer.toLowerCase() !== "y") {
+    break;
+  }
 }
