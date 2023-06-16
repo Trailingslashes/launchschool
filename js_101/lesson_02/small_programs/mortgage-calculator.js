@@ -44,7 +44,7 @@ while (true) {
       * (1 + monthlyInterestRate) ** termInMonths)
     / ((1 + monthlyInterestRate) ** termInMonths - 1);
 
-  console.log(monthlyPayments.toFixed(2));
+  prompt(monthlyPayments.toFixed(2));
 
   prompt(messages.performAnotherCalculation);
   const answer = readline.question();
