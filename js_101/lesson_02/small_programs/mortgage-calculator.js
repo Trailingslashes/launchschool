@@ -28,7 +28,7 @@ while (true) {
     prompt(messages.validNumber);
     termInYears = readline.question();
   }
-  const termInMonths = parseInt(termInYears) * 12;
+  const termInMonths = parseInt(termInYears, 10) * 12;
 
   prompt(messages.interestRate);
   let annualInterestRate = readline.question();
@@ -42,8 +42,8 @@ while (true) {
   const monthlyPayments =
     (loanAmount *
       monthlyInterestRate *
-      Math.pow(1 + monthlyInterestRate, termInMonths)) /
-    (Math.pow(1 + monthlyInterestRate, termInMonths) - 1);
+      (1 + monthlyInterestRate) ** termInMonths) /
+    ((1 + monthlyInterestRate) ** termInMonths - 1);
 
   console.log(monthlyPayments.toFixed(2));
 
