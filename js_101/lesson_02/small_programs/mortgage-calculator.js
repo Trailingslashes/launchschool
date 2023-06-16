@@ -12,28 +12,28 @@ function invalidNumber(number) {
   return number.trimStart() === "" || Number.isNaN(Number(number));
 }
 
-prompt("Welcome to the mortgage calculator!");
+prompt(messages.welcome);
 
 while (true) {
-  prompt("Enter your loan amount");
+  prompt(messages.loan);
   let loanAmount = readline.question();
   while (invalidNumber(loanAmount)) {
-    prompt("Hmm... that doesn't look like a valid number.");
+    prompt(messages.validNumber);
     loanAmount = readline.question();
   }
 
-  prompt("Enter (in years) how long your term is");
+  prompt(messages.term);
   let termInYears = readline.question();
   while (invalidNumber(termInYears)) {
-    prompt("Hmm... that doesn't look like a valid number.");
+    prompt(messages.validNumber);
     termInYears = readline.question();
   }
   const termInMonths = parseInt(termInYears) * 12;
 
-  prompt("Enter the annual interest rate (e.g., 5 for 5%):");
+  prompt(messages.interestRate);
   let annualInterestRate = readline.question();
   while (invalidNumber(annualInterestRate)) {
-    prompt("Hmm... that doesn't look like a valid number.");
+    prompt(messages.validNumber);
     annualInterestRate = readline.question();
   }
   const annualInterestRateDecimal = parseFloat(annualInterestRate) / 100;

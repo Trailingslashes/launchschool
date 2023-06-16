@@ -1,9 +1,8 @@
 {
-  "welcome": "Welcome to Calculator!",
-  "enterFirstNumber": "What's the first number?",
-  "enterSecondNumber": "What's the second number?",
-  "chooseOperation": "What operation would you like to perform\n1) Add 2) Subtract 3) Multiply 4) Divide?",
+  "welcome": "Welcome to the mortgage calculator!",
+  "loan": "Enter your loan amount",
+  "term": "Enter (in years) how long your term is",
+  "interestRate": "Enter the annual interest rate (e.g., 5 for 5%):",
 	"validNumber": "Hmm... that doesn't look like a valid number.",
-	"mustChoose": "Must choose 1, 2, 3, or 4",
   "performAnotherCalculation": "Do you want to perform another calculation? (y/n)"
 }
