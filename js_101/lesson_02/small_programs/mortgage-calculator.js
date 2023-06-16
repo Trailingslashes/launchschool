@@ -1,7 +1,7 @@
-const readline = require("readline-sync");
-const fs = require("fs");
+const readline = require('readline-sync');
+const fs = require('fs');
 
-const fileContent = fs.readFileSync("mortgage_messages.json", "utf8");
+const fileContent = fs.readFileSync('mortgage_messages.json', 'utf8');
 const messages = JSON.parse(fileContent);
 
 function prompt(message) {
@@ -9,7 +9,7 @@ function prompt(message) {
 }
 
 function invalidNumber(number) {
-  return number.trimStart() === "" || Number.isNaN(Number(number));
+  return number.trimStart() === '' || Number.isNaN(Number(number));
 }
 
 prompt(messages.welcome);
@@ -39,17 +39,16 @@ while (true) {
   const annualInterestRateDecimal = parseFloat(annualInterestRate) / 100;
   const monthlyInterestRate = annualInterestRateDecimal / 12;
 
-  const monthlyPayments =
-    (loanAmount *
-      monthlyInterestRate *
-      (1 + monthlyInterestRate) ** termInMonths) /
-    ((1 + monthlyInterestRate) ** termInMonths - 1);
+  const monthlyPayments = (loanAmount
+      * monthlyInterestRate
+      * (1 + monthlyInterestRate) ** termInMonths)
+    / ((1 + monthlyInterestRate) ** termInMonths - 1);
 
   console.log(monthlyPayments.toFixed(2));
 
   prompt(messages.performAnotherCalculation);
   const answer = readline.question();
-  if (answer.toLowerCase() !== "y") {
+  if (answer.toLowerCase() !== 'y') {
     break;
   }
 }
