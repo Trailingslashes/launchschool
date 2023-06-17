@@ -48,6 +48,7 @@ while (true) {
 
   prompt(messages.performAnotherCalculation);
   const answer = readline.question();
+  console.clear();
   if (answer.toLowerCase() !== 'y') {
     break;
   }
